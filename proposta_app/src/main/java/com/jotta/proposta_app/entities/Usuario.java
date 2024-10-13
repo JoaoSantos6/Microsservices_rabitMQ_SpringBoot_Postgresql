@@ -1,4 +1,4 @@
-package com.joaojotta.proposta_web.entities;
+package com.jotta.proposta_app.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,25 +11,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 @Entity
-public class Proposta {
+public class Usuario {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private Double valorSolicitado;
-	private int prazoPagamento;
-	private Boolean aprovada;
-	private boolean integrada;
-	private String observacao;
-	
-	@OneToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+    private String sobrenome;
+    private String cpf;
+    private String telefone;
+    private Double renda;
+
+    @OneToOne(mappedBy = "usuario")
+    private Proposta proposta;
 }

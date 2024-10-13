@@ -1,13 +1,13 @@
-package com.joaojotta.proposta_web;
+package com.jotta.proposta_app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PropostaWebApplication {
+public class PropostaAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PropostaWebApplication.class, args);
+		SpringApplication.run(PropostaAppApplication.class, args);
 	}
 
 }

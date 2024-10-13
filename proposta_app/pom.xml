@@ -8,10 +8,10 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.joaojotta</groupId>
-	<artifactId>proposta-web</artifactId>
+	<groupId>com.jotta</groupId>
+	<artifactId>proposta-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>proposta-web</name>
+	<name>proposta-app</name>
 	<description>Microserviço responsável pelo cadastro das propostas</description>
 	<url/>
 	<licenses>
