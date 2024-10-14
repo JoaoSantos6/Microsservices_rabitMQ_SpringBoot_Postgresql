@@ -1,3 +1,7 @@
+criando container com a imagem pronta:
+docker run --name proposta-web-container -d --rm -p 80:80 matheuspieropan/proposta-web
+
+-----------------------------------------------------------------------------------------
 docker run --name postgres-container -d -e POSTGRES_PASSWORD=123 -e POSTGRES_DB=propostadb -p 5433:5432 postgres
 
 POSTGRES_PASSWORD = senha do banco de dados
