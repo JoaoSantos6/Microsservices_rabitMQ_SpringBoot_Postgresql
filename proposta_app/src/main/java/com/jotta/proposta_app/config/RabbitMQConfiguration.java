@@ -39,7 +39,10 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
-    public ApplicationListener<ApplicationReadyEvent> inicializarAdmin(RabbitAdmin rabbitAdmin){
-        return event -> rabbitAdmin.initialize();
+    public ApplicationListener<ApplicationReadyEvent> inicializarAdmin(RabbitAdmin rabbitAdmin) {
+        return event -> {
+            System.out.println("Inicializando RabbitAdmin...");
+            rabbitAdmin.initialize();
+        };
     }
 }
