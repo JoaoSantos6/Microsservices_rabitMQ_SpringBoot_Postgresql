@@ -1,8 +1,7 @@
 package com.jotta.proposta_app.config;
 
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -45,4 +44,23 @@ public class RabbitMQConfiguration {
             rabbitAdmin.initialize();
         };
     }
+
+    //Criando a exchange proposta-pendente.ex com o tipo fanout
+    @Bean
+    public FanoutExchange criarFanoutExchangePropostaPendente(){
+        return ExchangeBuilder.fanoutExchange("proposta-pendente.ex").build();
+    }
+
+    @Bean
+    public Binding criarBindingPropostaPendenteMsAnaliseCredito(){
+        return BindingBuilder.bind(criarFilaPropostaPendenteMsAnaliseCredito())
+                .to(criarFanoutExchangePropostaPendente());
+    }
+
+    @Bean
+    public Binding criarBindingPropostaPendenteMsNotificacao(){
+        return BindingBuilder.bind(criarFilaPropostaPendenteMsNotificacao())
+                .to(criarFanoutExchangePropostaPendente());
+    }
+
 }
