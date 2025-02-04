@@ -16,11 +16,17 @@ public class PropostaService {
 
     private PropostaRepository propostaRepository;
 
+    private NotificacaoService notificacaoService;
+
     public PropostaResponseDto criar(PropostaRequestDto requestDto){
         Proposta proposta = PropostaMapper.INSTANCE.convertDtoToProposta(requestDto);
-        propostaRepository.save(proposta);
+        propostaRepository.save(proposta); // salva no BD
 
-        return PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        PropostaResponseDto response = PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        notificacaoService.notificar(response, "proposta-pendente.ex");//notifica a exchange proposta-pendente
+
+
+        return response;
     }
 
     public List<PropostaResponseDto> obterProposta() {
